@@ -1,0 +1,65 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:41e5e7c4-9b54-44bf-9738-95713fcbbc22 -->
+<metadata name="xml1" path="/shared/testingxml/xml1" type="PROCEDURE" subtype="BASIC_TRANSFORM_PROCEDURE" changeToken="0">
+  <parameters>
+    <parameter name="in" direction="IN" nullable="false">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="outputs" direction="OUT" nullable="true">
+      <datatype name="outputs" type="TABLE" refId="1">
+        <element name="ID">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="PARENT_ID">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="DEPTH">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="NAME">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="XPATH">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="PATH">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="POSITION">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="VALUE">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/shared/t123" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="prd" direction="IN" nullable="false">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="output" direction="OUT" nullable="false">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <datatype name="XML" type="TREE" refId="2"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="creationDate" type="LONG">1576706090288</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1576707517146</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1576706090288</attribute>
+  <attribute name="sourcePath" type="STRING">/shared/t123</attribute>
+  <attribute name="sourceType" type="SHORT">3</attribute>
+</metadata>

@@ -1,0 +1,99 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:41e5e7c4-9b54-44bf-9738-95713fcbbc22 -->
+<metadata name="restapipq1" path="/shared/testingxml/restapipq1" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <parameters>
+    <parameter name="userName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="100"/>
+    </parameter>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1">
+        <element name="id">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="name">
+          <datatype name="VARCHAR" type="STRING" maxLength="100"/>
+        </element>
+        <element name="organization">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="capacityUnit">
+          <datatype name="VARCHAR" type="STRING" maxLength="100"/>
+        </element>
+        <element name="installedCapacity">
+          <datatype name="DECIMAL" type="DECIMAL" maxDigits="10" maxFractionalDigits="1"/>
+        </element>
+        <element name="latitude">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="longitude">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="parkType">
+          <datatype name="VARCHAR" type="STRING" maxLength="100"/>
+        </element>
+        <element name="timezone">
+          <datatype name="VARCHAR" type="STRING" maxLength="100"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/shared/testingxml/restapitest2/getlocations" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="userName" direction="IN" nullable="unknown">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="output" direction="OUT" nullable="unknown">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">PROCEDURE restapipq1(
+	IN userName VARCHAR(100),
+    OUT result CURSOR (
+        id INTEGER, 
+        name VARCHAR(100), 
+        organization INTEGER, 
+        capacityUnit VARCHAR(100), 
+        installedCapacity DECIMAL(10,1), 
+        latitude VARCHAR(255), 
+        longitude VARCHAR(255), 
+        parkType VARCHAR(100), 
+        timezone VARCHAR(100)
+        )
+    )
+    BEGIN
+        OPEN result FOR 
+            SELECT 
+    id,name,organization,capacityUnit,installedCapacity,latitude,longitude,parkType,timezone
+from JSON_TABLE(JSONFILE.&quot;output&quot;,
+&apos;$.&quot;&quot;&apos;
+	COLUMNS(id integer PATH &apos;$.id&apos;,
+	name VARCHAR(100) PATH &apos;$.name&apos;,
+	organization integer PATH &apos;$.organization&apos;,
+	capacityUnit VARCHAR(100) PATH &apos;$.capacityUnit&apos;,
+	installedCapacity DECIMAL(10,1) PATH &apos;$.installedCapacity&apos;,
+	latitude VARCHAR(255) PATH &apos;$.latitude&apos;,
+	longitude VARCHAR(255) PATH &apos;$.longitude&apos;,
+	parkType VARCHAR(100) PATH &apos;$.parkType&apos;,
+	timezone VARCHAR(100) PATH &apos;$.timezone&apos;))JT,
+ /shared/testingxml/restapitest2/getlocations(userName) JSONFILE;
+    END</attribute>
+  <attribute name="creationDate" type="LONG">1578669320313</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="impactLevel" type="INTEGER">0</attribute>
+  <attribute name="impactMessage" type="NULL"/>
+  <attribute name="lastModifiedDate" type="LONG">1578669532246</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1578669320313</attribute>
+</metadata>

@@ -1,0 +1,102 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:41e5e7c4-9b54-44bf-9738-95713fcbbc22 -->
+<metadata name="testrestapi1" path="/shared/testingxml/testrestapi1" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <columns>
+    <column name="id" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="name" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="organization" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="capacityUnit" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="installedCapacity" nullable="true">
+      <datatype type="DECIMAL" maxDigits="10" maxFractionalDigits="1"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="latitude" nullable="true">
+      <datatype type="STRING" maxLength="255"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="longitude" nullable="true">
+      <datatype type="STRING" maxLength="255"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="parkType" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="timezone" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/shared/testingxml/restapitest2/getlocations" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="userName" direction="IN" nullable="unknown">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="output" direction="OUT" nullable="unknown">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+    id,name,organization,capacityUnit,installedCapacity,latitude,longitude,parkType,timezone
+from JSON_TABLE(JSONFILE.&quot;output&quot;,
+&apos;$.&quot;&quot;&apos;
+	COLUMNS(id integer PATH &apos;$.id&apos;,
+	name VARCHAR(100) PATH &apos;$.name&apos;,
+	organization integer PATH &apos;$.organization&apos;,
+	capacityUnit VARCHAR(100) PATH &apos;$.capacityUnit&apos;,
+	installedCapacity DECIMAL(10,1) PATH &apos;$.installedCapacity&apos;,
+	latitude VARCHAR(255) PATH &apos;$.latitude&apos;,
+	longitude VARCHAR(255) PATH &apos;$.longitude&apos;,
+	parkType VARCHAR(100) PATH &apos;$.parkType&apos;,
+	timezone VARCHAR(100) PATH &apos;$.timezone&apos;))JT,
+ /shared/testingxml/restapitest2/getlocations(&apos;cgr@cgr.com&apos;) JSONFILE</attribute>
+  <attribute name="creationDate" type="LONG">1578595389070</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="impactLevel" type="INTEGER">0</attribute>
+  <attribute name="impactMessage" type="NULL"/>
+  <attribute name="lastModifiedDate" type="LONG">1578602838162</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1578595389070</attribute>
+</metadata>
