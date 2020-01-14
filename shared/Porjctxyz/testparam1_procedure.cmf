@@ -1,0 +1,51 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:d4947933-bc9d-4b2b-be84-c1e976ce1474 -->
+<metadata name="testparam1" path="/shared/Porjctxyz/testparam1" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <parameters>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1"></datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege user="anonymous" domain="composite" privileges="READ EXECUTE"/>
+  </security>
+  <attribute name="Script" type="STRING">PROCEDURE testparam1(
+in employeeid integer(
+    OUT result CURSOR (
+        shipaddress VARCHAR(255), 
+        shipcity VARCHAR(50), 
+         employeeid INTEGER, 
+        firstname VARCHAR(50), 
+        lastname VARCHAR(50), 
+        extension VARCHAR(30), 
+        shipcountry VARCHAR(50)
+        )
+    )
+    BEGIN
+        OPEN result FOR 
+            SELECT 
+                *
+            FROM      
+                /shared/Porjctxyz/&quot;physical layer&quot;/combinedlayer/testview1 testview1;
+    END</attribute>
+  <attribute name="creationDate" type="LONG">1576486849576</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="impactLevel" type="INTEGER">2</attribute>
+  <attribute name="impactMessage" type="STRING">Unable to parse SQL script:  expecting right parenthesis, found &apos;(&apos;.  On line 2, column 22.
+    [script-1910041]</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1576486951096</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="public_constants" type="NULL"/>
+  <attribute name="public_exceptions" type="NULL"/>
+  <attribute name="public_types" type="NULL"/>
+  <attribute name="references" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1576486849576</attribute>
+</metadata>
