@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<!-- salt:d4947933-bc9d-4b2b-be84-c1e976ce1474 -->
+<!-- salt:2ba04012-68a4-4fc0-a3ee-4c9a2a28e11f -->
 <metadata name="testparam1" path="/shared/Porjctxyz/testparam1" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
   <parameters>
     <parameter name="result" direction="OUT" nullable="true">
@@ -10,7 +10,7 @@
     <owner user="admin" domain="composite"/>
     <privilege user="anonymous" domain="composite" privileges="READ EXECUTE"/>
   </security>
-  <attribute name="Script" type="STRING">PROCEDURE testparam1(
+  <attribute name="Script" type="STRING">PROCEDURE testparam1( vdfd
 in employeeid integer(
     OUT result CURSOR (
         shipaddress VARCHAR(255), 
@@ -35,9 +35,8 @@ in employeeid integer(
   <attribute name="creatorUserName" type="STRING">admin</attribute>
   <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
   <attribute name="impactLevel" type="INTEGER">2</attribute>
-  <attribute name="impactMessage" type="STRING">Unable to parse SQL script:  expecting right parenthesis, found &apos;(&apos;.  On line 2, column 22.
-    [script-1910041]</attribute>
-  <attribute name="lastModifiedDate" type="LONG">1576486951096</attribute>
+  <attribute name="impactMessage" type="STRING">Unable to parse SQL script:  unexpected token: in.  On line 2, column 1.   [script-1910041]</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1579025664172</attribute>
   <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
   <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
   <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
